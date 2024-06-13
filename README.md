@@ -66,8 +66,8 @@ The implementation of FlowTM relies on resources from the following codebases an
 
 ## Authors
 
-- Yan Qiao -  [qiaoyan@hfut.edu.cn](qiaoyan:qiaoyan@hfut.edu.cn)
-- Xinyu Yuan - [yxy5315@gmail.com](yuanxinyu:yxy5315@gmail.com)
+- [Yan Qiao](http://faculty.hfut.edu.cn/qiaoyan/en/index.htm) -  [qiaoyan@hfut.edu.cn](qiaoyan:qiaoyan@hfut.edu.cn)
+- [Xinyu Yuan](https://y-debug-sys.github.io/) - [yxy5315@gmail.com](yuanxinyu:yxy5315@gmail.com)
 
 <!-- ## FAQs -->
 
