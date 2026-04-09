@@ -28,6 +28,15 @@ def load_data(args):
         tm_filename = 'geant_tm.csv'
         if rm_filename is None:
             rm_filename = 'geant_rm.csv'
+    elif dataset_name == 'simuisp':
+        n_train = 5 * 7
+        n_test = 1 * 7
+        train_size = int(n_train * 96)
+        test_size = int(n_test * 96)
+        scale = 10 ** 10
+        tm_filename = 'simuisp_tm.csv'
+        if rm_filename is None:
+            rm_filename = 'simuisp_rm.csv'
     else:
         raise NotImplementedError
 

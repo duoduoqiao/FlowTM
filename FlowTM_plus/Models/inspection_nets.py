@@ -3,16 +3,20 @@ from torch import nn
 
 
 class Inspector(nn.Module):
-    def __init__(self, dataset):
+    def __init__(self, args):
         super(Inspector, self).__init__()
-        if dataset == 'abilene':
+        if args.dataset == 'abilene':
             dim = 12
             self.conv_init = nn.Conv2d(1, 4, kernel_size=3, stride=1, padding=1)
             self.conv_final = nn.Identity()
-        elif dataset == 'geant':
+        elif args.dataset == 'geant':
             dim = 24
             self.conv_init = nn.Conv2d(1, 4, kernel_size=4, stride=1, padding=2)
             self.conv_final = nn.ConvTranspose2d(1, 1, kernel_size=4, stride=1, padding=2)
+        elif args.dataset == 'simuisp':
+            dim = 100
+            self.conv_init = nn.Conv2d(1, 4, kernel_size=3, stride=1, padding=1)
+            self.conv_final = nn.Identity()
         else:
             dim = 12
             self.conv_init = nn.Conv2d(1, 4, kernel_size=3, stride=1, padding=1)
@@ -50,21 +54,25 @@ class Inspector(nn.Module):
 
 
 class Inspector3D(nn.Module):
-    def __init__(self, dataset):
+    def __init__(self, args):
         super(Inspector3D, self).__init__()
-        if dataset == 'abilene':
+        if args.dataset == 'abilene':
             dim = 12
             self.conv_init = nn.Conv3d(1, 4, kernel_size=3, stride=1, padding=1)
             self.conv_final = nn.Identity()
-        elif dataset == 'geant':
+        elif args.dataset == 'geant':
             dim = 24
             self.conv_init = nn.Conv3d(1, 4, kernel_size=(1, 4, 4), stride=1, padding=(0, 2, 2))
             self.conv_final = nn.ConvTranspose3d(1, 1, kernel_size=(1, 4, 4), stride=1, padding=(0, 2, 2))
+        elif args.dataset == 'simuisp':
+            dim = 100
+            self.conv_init = nn.Conv3d(1, 4, kernel_size=3, stride=1, padding=1)
+            self.conv_final = nn.Identity()
         else:
             dim = 12
             self.conv_init = nn.Conv3d(1, 4, kernel_size=3, stride=1, padding=1)
             self.conv_final = nn.Identity()
-        window = 12
+        window = args.window
 
         self.layers = nn.Sequential(
             nn.Conv3d(4, 8, kernel_size=3, stride=2, padding=1),

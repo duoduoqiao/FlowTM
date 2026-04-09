@@ -44,12 +44,12 @@ def parse_args():
     parser.add_argument('--run-name', type=str, default="Output", help='The folder name used to save model,'
                         ' output and evaluation metrics. This can be set to any word')
     parser.add_argument('--dataset', type=str, default="abilene",
-                        choices=["abilene", "geant", "cernet"], help="The dataset name")
+                        choices=["abilene", "geant", "simuisp"], help="The dataset name")
     parser.add_argument('--batch-size', type=int, default=32,
                         help="Batch size")
     parser.add_argument('--rm-fn', type=str, default="abilene_rm.csv", 
                         help="Route Matrix (Deterministic or Probabilistic Routing)")
-    parser.add_argument('--window', type=float, default=12,
+    parser.add_argument('--window', type=int, default=12,
                         help="Window size")
     
     # args for models
@@ -119,9 +119,9 @@ def main(args):
     ae_model = AutoEncoder(feature_dim=train_loader.dataset.dim_2, hidden_dim=args.hd_dims, dropout=args.dropout)
     model = FlowNet(block_num=args.n_blocks, size_1=train_loader.dataset.dim_1, size_2=args.hd_dims, shuffle=args.shuffle)
     if args.use_conv3d:
-        inspector = Inspector3D(args.dataset)
+        inspector = Inspector3D(args)
     else:
-        inspector = Inspector(args.dataset)
+        inspector = Inspector(args)
 
     solver = Solver(args, ae_model, inspector, model, train_loader, results_folder=os.path.join(args.run_name, f'flow_ckpt'))
 
