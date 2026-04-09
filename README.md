@@ -50,7 +50,7 @@ The detailed descriptions about the arguments are as following:
 (For descriptions of more arguments, run `python train.py -h`.)
 
 ## Main Results
-We use two real-world traffic datasets to validate the performance of FlowTM: `Abilene` and `GÉANT`.
+We use two real-world network traffic datasets, `Abilene` and `GÉANT`, as well as a simulated dataset, `Simu-ISP`, to validate the performance of FlowTM+.
 FlowTM+ consistently outperforms all baseline methods across different TM observability levels in terms of both estimation accuracy and distribution similarity. Notably, FlowTM+ achieves the same estimation accuracy as the best baseline trained with 100% TM data by using only 2% of the TM observations on the `Abilene` dataset, and only 30% on the `GÉANT` dataset (refer to main paper for full results).
 <p align="center">
 <img src="Figures/fig2.jpg" width = "100%" alt="" align=center />
